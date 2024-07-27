@@ -1,4 +1,4 @@
-# Moeen AI - Intelligent Instruction Execution Assistant
+# Moeen AI - Intelligent Instruction & Task Execution Assistant
 
 Welcome to the Moeen AI project! Moeen is an AI-powered virtual assistant that intelligently interprets natural language instructions and autonomously executes them, streamlining workflows and boosting productivity.
 
