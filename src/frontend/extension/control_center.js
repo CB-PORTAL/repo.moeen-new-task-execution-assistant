@@ -18,7 +18,7 @@ function saveTask(button) {
     const taskItem = button.parentElement;
     const taskName = taskItem.querySelector('input[placeholder="Task name"]').value;
     const action = taskItem.querySelector('input[placeholder="Action"]').value;
-    
+   
     chrome.storage.sync.get('tasks', function(data) {
         const tasks = data.tasks || [];
         tasks.push({ name: taskName, action: action });

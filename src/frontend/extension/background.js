@@ -4,7 +4,6 @@ chrome.contextMenus.create({
     contexts: ["selection"]
   });
   
-  
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "executeWithMoeen") {
       // Check if Control Center is already open
@@ -15,7 +14,6 @@ chrome.contextMenus.create({
           chrome.tabs.create({ url: chrome.runtime.getURL("control_center.html") });
         }
       });
-  
   
       const selectedText = info.selectionText;
       fetch('http://localhost:5000/process_instruction', {
@@ -32,4 +30,4 @@ chrome.contextMenus.create({
       })
       .catch(error => console.error('Error:', error));
     }
-  });  
+  });
