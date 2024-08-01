@@ -1,23 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moeen AI Control Center</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        .task-list { margin-top: 20px; }
-        .task-item { margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-    <h1>Moeen AI Control Center</h1>
-    <div class="task-list" id="taskList">
-        <!-- Tasks will be dynamically added here -->
-    </div>
-    <button id="addTask">Add New Task</button>
-
-    <script src="control_center.js"></script>
-</body>
-</html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Moeen AI Command Center</title>
+       <style>
+           body {
+               font-family: 'Arial', sans-serif;
+               background-color: #1a1a2e;
+               color: #ffffff;
+               margin: 0;
+               padding: 20px;
+           }
+           h1 {
+               color: #4ecca3;
+               text-align: center;
+           }
+           .task-list {
+               background-color: #16213e;
+               border-radius: 8px;
+               padding: 20px;
+               margin-top: 20px;
+           }
+           .task-item {
+               background-color: #0f3460;
+               border-radius: 4px;
+               padding: 10px;
+               margin-bottom: 10px;
+           }
+           input, button {
+               background-color: #233554;
+               color: #ffffff;
+               border: none;
+               padding: 8px;
+               margin: 5px;
+               border-radius: 4px;
+           }
+           button {
+               cursor: pointer;
+               transition: background-color 0.3s;
+           }
+           button:hover {
+               background-color: #4ecca3;
+           }
+       </style>
+   </head>
+   <body>
+       <h1>Moeen AI Command Center</h1>
+       <div class="task-list" id="taskList">
+           <!-- Tasks will be dynamically added here -->
+       </div>
+       <input type="text" id="taskName" placeholder="Task name">
+       <input type="text" id="action" placeholder="Action">
+       <button id="addTask">Add New Workflow</button>
+       <script src="control_center.js"></script>
+   </body>
+   </html>
