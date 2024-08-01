@@ -1,12 +1,12 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Moeen AI",
   "version": "0.1",
   "description": "An intelligent instruction execution assistant",
-  "permissions": ["activeTab", "storage", "http://*/*", "https://*/*"],
+  "permissions": ["activeTab", "storage", "contextMenus"],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -14,7 +14,7 @@
       "js": ["content.js"]
     }
   ],
-  "browser_action": {
+  "action": {
     "default_title": "Moeen AI"
   }
 }
