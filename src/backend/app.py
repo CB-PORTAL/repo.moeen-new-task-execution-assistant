@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import spacy
 import re
+from ml_model import classifier
 
 app = Flask(__name__)
 CORS(app)
@@ -18,11 +19,8 @@ def extract_action_and_target(doc):
     return action, target
 
 def preprocess_instruction(instruction):
-    # Convert to lowercase
     instruction = instruction.lower()
-    # Remove punctuation
     instruction = re.sub(r'[^\w\s]', '', instruction)
-    # Tokenize
     tokens = instruction.split()
     return tokens
 
@@ -31,15 +29,15 @@ def process_instruction():
     data = request.json
     instruction = data['instruction']
     
-    # Preprocess the instruction
     preprocessed = preprocess_instruction(instruction)
-    
-    # Use spaCy for NLP processing
     doc = nlp(instruction)
     action, target = extract_action_and_target(doc)
     
-    # Determine the action based on keywords
-    if 'open' in preprocessed or 'go to' in ' '.join(preprocessed):
+    predicted_action = classifier.predict(instruction)
+    
+    if predicted_action != 'unknown':
+        action = predicted_action
+    elif 'open' in preprocessed or 'go to' in ' '.join(preprocessed):
         action = 'open'
     elif 'search' in preprocessed:
         action = 'search'
@@ -52,6 +50,8 @@ def process_instruction():
         'preprocessed': preprocessed,
         'full_instruction': instruction
     }
+    
+    classifier.add_data(instruction, action)
     
     return jsonify(response)
 
